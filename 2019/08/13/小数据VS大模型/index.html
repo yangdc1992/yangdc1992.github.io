@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>DcYang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="小数据VS大模型首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数">
+<meta name="keywords" content="nlp, machine learning, deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DcYang">
+<meta property="og:url" content="http://yoursite.com/2019/08/13/小数据VS大模型/index.html">
+<meta property="og:site_name" content="DcYang">
+<meta property="og:description" content="小数据VS大模型首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-13T05:05:02.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DcYang">
+<meta name="twitter:description" content="小数据VS大模型首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数">
+  
+    <link rel="alternate" href="/atom.xml" title="DcYang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">DcYang</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">dcyang&#39;s personal website</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-小数据VS大模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/13/小数据VS大模型/" class="article-date">
+  <time datetime="2019-08-13T05:05:02.171Z" itemprop="datePublished">2019-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="小数据VS大模型"><a href="#小数据VS大模型" class="headerlink" title="小数据VS大模型"></a>小数据VS大模型</h1><p>首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：</p>
+<ul>
+<li>像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大</li>
+<li>实际工作中，获取训练数据的成本高，实际可用的训练数据量小</li>
+</ul>
+<p>那直接把小数据喂给大模型会产生什么后果呢？</p>
+<ul>
+<li>过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数据集里的一些简单模式，在遇到新的数据时，泛化性能差。</li>
+</ul>
+<p>相应的解决方案：</p>
+<ul>
+<li>数据增强，可以使用同义词替换等方式对原数据加入更多噪声，避免让模型学到的只是一些肤浅的模式</li>
+<li>使用预训练的词向量或模型，预训练的词向量或模型本身带有大量的信息，可以降低整体模型的学习难度</li>
+<li>加入更多领域知识，为避免模型学习到的只是一些肤浅的简单模式，可以在输入特征中加入更多的领域知识，指导模型学习</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="cjz9d48zz00024x4uebwb1gcm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/13/主动学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/13/小数据VS大模型/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/主动学习/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/数据不平衡的几点思考/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 杨德城/Decheng Yang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
