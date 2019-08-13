@@ -5,20 +5,20 @@
   
 
   
-  <title>DcYang</title>
+  <title>小数据VS大模型 | DcYang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小数据VS大模型首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数">
+  <meta name="description" content="首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数据集里的一些简单">
 <meta name="keywords" content="nlp, machine learning, deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DcYang">
+<meta property="og:title" content="小数据VS大模型">
 <meta property="og:url" content="http://yoursite.com/2019/08/13/小数据VS大模型/index.html">
 <meta property="og:site_name" content="DcYang">
-<meta property="og:description" content="小数据VS大模型首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数">
+<meta property="og:description" content="首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数据集里的一些简单">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-13T05:05:02.171Z">
+<meta property="og:updated_time" content="2019-08-13T10:25:17.673Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DcYang">
-<meta name="twitter:description" content="小数据VS大模型首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数">
+<meta name="twitter:title" content="小数据VS大模型">
+<meta name="twitter:description" content="首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：  像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大 实际工作中，获取训练数据的成本高，实际可用的训练数据量小  那直接把小数据喂给大模型会产生什么后果呢？  过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数据集里的一些简单">
   
     <link rel="alternate" href="/atom.xml" title="DcYang" type="application/atom+xml">
   
@@ -72,16 +72,26 @@
         <section id="main"><article id="post-小数据VS大模型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/13/小数据VS大模型/" class="article-date">
-  <time datetime="2019-08-13T05:05:02.171Z" itemprop="datePublished">2019-08-13</time>
+  <time datetime="2019-08-13T09:54:33.000Z" itemprop="datePublished">2019-08-13</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      小数据VS大模型
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="小数据VS大模型"><a href="#小数据VS大模型" class="headerlink" title="小数据VS大模型"></a>小数据VS大模型</h1><p>首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：</p>
+        <p>首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：</p>
 <ul>
 <li>像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大</li>
 <li>实际工作中，获取训练数据的成本高，实际可用的训练数据量小</li>
@@ -100,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="cjz9d48zz00024x4uebwb1gcm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="cjz9olwe600012z4u9mpvnqlh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -109,10 +119,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2019/08/13/主动学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          主动学习
+        
+      </div>
+    </a>
   
-    <a href="/2019/08/13/主动学习/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2019/08/13/数据不平衡的几点思考/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">数据不平衡的几点思考</div>
     </a>
   
 </nav>
@@ -149,15 +168,19 @@
       <ul>
         
           <li>
-            <a href="/2019/08/13/小数据VS大模型/">(no title)</a>
+            <a href="/2019/08/13/deepsequence-最完整的深度学习序列标注工具/">deepsequence-最完整的深度学习序列标注工具</a>
           </li>
         
           <li>
-            <a href="/2019/08/13/主动学习/">(no title)</a>
+            <a href="/2019/08/13/主动学习/">主动学习</a>
           </li>
         
           <li>
-            <a href="/2019/08/13/数据不平衡的几点思考/">(no title)</a>
+            <a href="/2019/08/13/小数据VS大模型/">小数据VS大模型</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/数据不平衡的几点思考/">数据不平衡的几点思考</a>
           </li>
         
       </ul>

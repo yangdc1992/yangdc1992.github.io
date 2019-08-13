@@ -5,19 +5,20 @@
   
 
   
-  <title>DcYang</title>
+  <title>deepsequence-最完整的深度学习序列标注工具 | DcYang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="keep learning! deep learner">
+  <meta name="description" content="简介deepsequence 是我在工作学习过程中写的一个做序列标注的工具，基于keras,支持各种经典的序列标注任务，如分词，NER(命名实体识别), 为什么是最完整的呢？  支持BERT+CRF 和 BILSTM+CRF两种最优秀的序列标注的算法架构 支持字符级别的特征，charCNN 或者 charLSTM 支持postag特征的输入 支持领域知识的输入，如用于ner识别的公司字典 支持BI">
 <meta name="keywords" content="nlp, machine learning, deep learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DcYang">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="deepsequence-最完整的深度学习序列标注工具">
+<meta property="og:url" content="http://yoursite.com/2019/08/13/deepsequence-最完整的深度学习序列标注工具/index.html">
 <meta property="og:site_name" content="DcYang">
-<meta property="og:description" content="keep learning! deep learner">
+<meta property="og:description" content="简介deepsequence 是我在工作学习过程中写的一个做序列标注的工具，基于keras,支持各种经典的序列标注任务，如分词，NER(命名实体识别), 为什么是最完整的呢？  支持BERT+CRF 和 BILSTM+CRF两种最优秀的序列标注的算法架构 支持字符级别的特征，charCNN 或者 charLSTM 支持postag特征的输入 支持领域知识的输入，如用于ner识别的公司字典 支持BI">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-13T10:26:33.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DcYang">
-<meta name="twitter:description" content="keep learning! deep learner">
+<meta name="twitter:title" content="deepsequence-最完整的深度学习序列标注工具">
+<meta name="twitter:description" content="简介deepsequence 是我在工作学习过程中写的一个做序列标注的工具，基于keras,支持各种经典的序列标注任务，如分词，NER(命名实体识别), 为什么是最完整的呢？  支持BERT+CRF 和 BILSTM+CRF两种最优秀的序列标注的算法架构 支持字符级别的特征，charCNN 或者 charLSTM 支持postag特征的输入 支持领域知识的输入，如用于ner识别的公司字典 支持BI">
   
     <link rel="alternate" href="/atom.xml" title="DcYang" type="application/atom+xml">
   
@@ -68,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-deepsequence-最完整的深度学习序列标注工具" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-deepsequence-最完整的深度学习序列标注工具" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/13/deepsequence-最完整的深度学习序列标注工具/" class="article-date">
   <time datetime="2019-08-13T09:55:53.000Z" itemprop="datePublished">2019-08-13</time>
@@ -83,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/deepsequence-最完整的深度学习序列标注工具/">deepsequence-最完整的深度学习序列标注工具</a>
+    <h1 class="article-title" itemprop="name">
+      deepsequence-最完整的深度学习序列标注工具
     </h1>
   
 
@@ -122,156 +121,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-主动学习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/13/主动学习/" class="article-date">
-  <time datetime="2019-08-13T09:55:07.000Z" itemprop="datePublished">2019-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/主动学习/">主动学习</a>
-    </h1>
+    <a href="/2019/08/13/主动学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">主动学习</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>主动学习是非常有用的模型迭代的策略和思想，具体概念大家可以自行搜索。这里主要介绍下主动学习关注的两个非常重要的点：</p>
-<ul>
-<li>数据的多样性，即数据集要尽量覆盖不同类型的数据。</li>
-<li>模型结果的不确定性，不确定即指模型对于给出的结果是不确定的，这里最直观的体现就是模型输出的概率，当模型输出一个结果，但相应的概率却较低的时候，就表明我们的模型对这一类case的学习泛化能力还不够。也是我们在模型迭代中要重点关注的对象。</li>
-</ul>
-<p>基于如上两个原则，主动学习能够很好的帮助我们了解数据，了解模型，从而指导我们调整数据分布，调整模型，完成模型的迭代。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/主动学习/" data-id="cjz9olwe000002z4ubt8tx4av" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-小数据VS大模型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/13/小数据VS大模型/" class="article-date">
-  <time datetime="2019-08-13T09:54:33.000Z" itemprop="datePublished">2019-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/小数据VS大模型/">小数据VS大模型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先，我要先说下实际工作中我们容易遇到的两个现状或痛点：</p>
-<ul>
-<li>像bert，xnet之类的state of the art 模型架构越来越复杂，模型的容量越来越大</li>
-<li>实际工作中，获取训练数据的成本高，实际可用的训练数据量小</li>
-</ul>
-<p>那直接把小数据喂给大模型会产生什么后果呢？</p>
-<ul>
-<li>过拟合，当数据量少，模型容量大的时候，最直接的后果就是过拟合，模型学到的可能只是一些非常肤浅的特征，或只是记住了当前数据集里的一些简单模式，在遇到新的数据时，泛化性能差。</li>
-</ul>
-<p>相应的解决方案：</p>
-<ul>
-<li>数据增强，可以使用同义词替换等方式对原数据加入更多噪声，避免让模型学到的只是一些肤浅的模式</li>
-<li>使用预训练的词向量或模型，预训练的词向量或模型本身带有大量的信息，可以降低整体模型的学习难度</li>
-<li>加入更多领域知识，为避免模型学习到的只是一些肤浅的简单模式，可以在输入特征中加入更多的领域知识，指导模型学习</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="cjz9olwe600012z4u9mpvnqlh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数据不平衡的几点思考" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/13/数据不平衡的几点思考/" class="article-date">
-  <time datetime="2019-08-13T09:54:13.000Z" itemprop="datePublished">2019-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/数据不平衡的几点思考/">数据不平衡的几点思考</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-不平衡并不仅仅只是某一类的数据少，数据冗余也是种不平衡"><a href="#1-不平衡并不仅仅只是某一类的数据少，数据冗余也是种不平衡" class="headerlink" title="1. 不平衡并不仅仅只是某一类的数据少，数据冗余也是种不平衡"></a>1. 不平衡并不仅仅只是某一类的数据少，数据冗余也是种不平衡</h2><h3 id="什么是数据冗余？"><a href="#什么是数据冗余？" class="headerlink" title="什么是数据冗余？"></a>什么是数据冗余？</h3><p>通俗来讲，数据冗余，就是说某一类case，对于学习模型来说，我只需要100个训练样本，就可以学到这类case，但训练数据里却有远超过100个数量的这一类case</p>
-<h3 id="数据冗余的问题？"><a href="#数据冗余的问题？" class="headerlink" title="数据冗余的问题？"></a>数据冗余的问题？</h3><ul>
-<li>浪费标注人员的人力，物力</li>
-<li>挤占其他类别的学习机会，在计算学习器损失的时候这一类样本的损失占了很大比例，导致其他类别的损失占比小，降低模型收敛速度和效果</li>
-</ul>
-<h2 id="2-脱离数据分布谈评估指标都是耍流氓"><a href="#2-脱离数据分布谈评估指标都是耍流氓" class="headerlink" title="2. 脱离数据分布谈评估指标都是耍流氓"></a>2. 脱离数据分布谈评估指标都是耍流氓</h2><p>在工作中，我们经常遇到的一个情况便是模型在训练测试集上评价指标非常好，但拿一些实际业务数据测的时候却发现效果测试集上评测指标显示的那么理想，为什么？</p>
-<ul>
-<li>测试数据分布不合理，当训练数据中，某一类简单的case占了大部分的时候，默认的评价指标自然会比较好看，但这样其实掩盖了真正问题，那些数据较少，又对实际业务影响较大的case，效果如何，很难从默认的评价指标中看出来</li>
-</ul>
-<h2 id="3-什么才是好的训练数据的分布？绝对平衡吗？"><a href="#3-什么才是好的训练数据的分布？绝对平衡吗？" class="headerlink" title="3. 什么才是好的训练数据的分布？绝对平衡吗？"></a>3. 什么才是好的训练数据的分布？绝对平衡吗？</h2><p>说到数据不平衡问题，大家首先想到的是通过降采样或上采样或其他数据增强的方式把不同类的数据变得<strong>数量上的绝对平衡</strong>，但绝对平衡一定是好的吗？个人认为，好的训练数据分布应该是<strong>在不违背总体先验分布的情况下，与各个类别的学习难度成正比</strong>，如果某一类别比较复杂，模型比较难学，那就多增加一些这类的样本，如果某一类别比较简单，就少增加一些这类的样本</p>
-<h2 id="4-如何在实际业务中准备分布合理的训练数据？"><a href="#4-如何在实际业务中准备分布合理的训练数据？" class="headerlink" title="4. 如何在实际业务中准备分布合理的训练数据？"></a>4. 如何在实际业务中准备分布合理的训练数据？</h2><p>模型的发展是一个迭代的过程，没有模型能够在一开始就很好的适应各种业务问题，相对应的训练数据也是一个迭代的过程，在迭代的过程中让分布越来越合理，实际工作中，在每一轮模型迭代的过程中，我们会通过模型输出的概率等方式去看模型在实际业务数据中的表现，通过这种方式指导调整数据的分布，以及模型的架构，最后完成这一轮的迭代。</p>
-<h2 id="5-处理数据不平衡的方法总结"><a href="#5-处理数据不平衡的方法总结" class="headerlink" title="5. 处理数据不平衡的方法总结"></a>5. 处理数据不平衡的方法总结</h2><ul>
-<li>调整数据分布</li>
-<li>使用非参数模型，如svm，基于决策树的模型（决策树，随机森林，gbdt…）, svm基于最大间隔优化，决策树基于最大信息增益优化，他们的优化方式决定了相比逻辑回归等参数权值优化的方式，天然对数据不平衡问题更加鲁棒</li>
-<li>在计算损失时，对样本加权，对数量少的类别使用更大的样本权重，使得模型在优化时更加关注这一类的样本</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/数据不平衡的几点思考/" data-id="cjz9olweb00032z4utj9pbzhy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
