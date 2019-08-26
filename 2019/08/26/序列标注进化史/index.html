@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>序列标注进化史 | DcYang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HMM -&amp;gt; MEMM -&amp;gt; CRF -&amp;gt; RNN -&amp;gt; LSTM -&amp;gt; Attention序列标注算法主体上经历了从隐马尔可夫，最大熵马尔可夫， 条件随机场， RNN, LSTM 到 transformer的一个演进过程，这是一个递进发展的过程。 HMM 两个假设  状态独立假设： 当前状态只依赖于上一个状态  观测独立假设： 当前观测变量只依赖于对应的状态变量">
+<meta name="keywords" content="nlp, machine learning, deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="序列标注进化史">
+<meta property="og:url" content="http://yoursite.com/2019/08/26/序列标注进化史/index.html">
+<meta property="og:site_name" content="DcYang">
+<meta property="og:description" content="HMM -&amp;gt; MEMM -&amp;gt; CRF -&amp;gt; RNN -&amp;gt; LSTM -&amp;gt; Attention序列标注算法主体上经历了从隐马尔可夫，最大熵马尔可夫， 条件随机场， RNN, LSTM 到 transformer的一个演进过程，这是一个递进发展的过程。 HMM 两个假设  状态独立假设： 当前状态只依赖于上一个状态  观测独立假设： 当前观测变量只依赖于对应的状态变量">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-26T15:07:04.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="序列标注进化史">
+<meta name="twitter:description" content="HMM -&amp;gt; MEMM -&amp;gt; CRF -&amp;gt; RNN -&amp;gt; LSTM -&amp;gt; Attention序列标注算法主体上经历了从隐马尔可夫，最大熵马尔可夫， 条件随机场， RNN, LSTM 到 transformer的一个演进过程，这是一个递进发展的过程。 HMM 两个假设  状态独立假设： 当前状态只依赖于上一个状态  观测独立假设： 当前观测变量只依赖于对应的状态变量">
+  
+    <link rel="alternate" href="/atom.xml" title="DcYang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">DcYang</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">dcyang&#39;s personal website</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-序列标注进化史" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/序列标注进化史/" class="article-date">
+  <time datetime="2019-08-26T14:36:25.000Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      序列标注进化史
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HMM-gt-MEMM-gt-CRF-gt-RNN-gt-LSTM-gt-Attention"><a href="#HMM-gt-MEMM-gt-CRF-gt-RNN-gt-LSTM-gt-Attention" class="headerlink" title="HMM -&gt; MEMM -&gt; CRF -&gt; RNN -&gt; LSTM -&gt; Attention"></a>HMM -&gt; MEMM -&gt; CRF -&gt; RNN -&gt; LSTM -&gt; Attention</h2><p>序列标注算法主体上经历了从隐马尔可夫，最大熵马尔可夫， 条件随机场， RNN, LSTM 到 transformer的一个演进过程，这是一个递进发展的过程。</p>
+<h3 id="HMM"><a href="#HMM" class="headerlink" title="HMM"></a>HMM</h3><ul>
+<li><p>两个假设<br>  状态独立假设： 当前状态只依赖于上一个状态<br>  观测独立假设： 当前观测变量只依赖于对应的状态变量</p>
+</li>
+<li><p>两个问题<br>  标签偏置问题： 即算法倾向于选择分支较少的状态，这是由于状态独立假设使得在计算标签转移概率时在局部归一化状态转移概率<br>  特征缺失： 由于观测独立假设，HMM无法将上下文信息融入，所以会有较大的局限性</p>
+</li>
+</ul>
+<h3 id="MEMM"><a href="#MEMM" class="headerlink" title="MEMM"></a>MEMM</h3><p>MEMM 取消了HMM的观测独立假设，它是判别模型的一种，引入了特征，可以方便的把上下文信息设计到特征中，解决了上下文信息缺失的问题，但MEMM没有取消HMM的状态独立假设，所以依然存在标签偏置的问题</p>
+<h3 id="CRF"><a href="#CRF" class="headerlink" title="CRF"></a>CRF</h3><p>CRF 在MEMM的基础上进一步取消了HMM的状态独立假设，将标签转移也作为全局特征之一，在全局进行优化，所以crf解决了标签偏置以及上下文信息缺失的问题</p>
+<h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>RNN是经典的深度学习序列模型，相比于CRF, RNN在词向量的基础上做特征抽象，比CRF的特征模板的方式能够更好的避免过拟合，此外，RNN在序列上下文特征上相比crf会更加有效</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><p>LSTM是RNN的改进模型之一， LSTM加入了门控单元，使得门控单元的阈值可以随上下文以及当前输入动态改变，从而改善RNN由于梯度传播过程中参数连乘造成的梯度消失的问题，能够处理更长的上下文依赖</p>
+<h3 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h3><p>attention 使用一种更加直接的方式处理当前词与上下文的关系，相比于LSTM, attention避免了梯度在序列间的传到，可以并行的计算，也能够处理更长的上下文依赖。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/26/序列标注进化史/" data-id="cjzsj8lxd00002l4u62g6ogr9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/26/短文本的几点思考/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">短文本的几点思考</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/26/序列标注进化史/">序列标注进化史</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/26/短文本的几点思考/">短文本的几点思考</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/deepsequence-最完整的深度学习序列标注工具/">deepsequence-最完整的深度学习序列标注工具</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/主动学习/">主动学习</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/小数据VS大模型/">小数据VS大模型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 杨德城/Decheng Yang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

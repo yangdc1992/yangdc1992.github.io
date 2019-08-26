@@ -70,6 +70,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-序列标注进化史" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/序列标注进化史/" class="article-date">
+  <time datetime="2019-08-26T14:36:25.000Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/序列标注进化史/">序列标注进化史</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HMM-gt-MEMM-gt-CRF-gt-RNN-gt-LSTM-gt-Attention"><a href="#HMM-gt-MEMM-gt-CRF-gt-RNN-gt-LSTM-gt-Attention" class="headerlink" title="HMM -&gt; MEMM -&gt; CRF -&gt; RNN -&gt; LSTM -&gt; Attention"></a>HMM -&gt; MEMM -&gt; CRF -&gt; RNN -&gt; LSTM -&gt; Attention</h2><p>序列标注算法主体上经历了从隐马尔可夫，最大熵马尔可夫， 条件随机场， RNN, LSTM 到 transformer的一个演进过程，这是一个递进发展的过程。</p>
+<h3 id="HMM"><a href="#HMM" class="headerlink" title="HMM"></a>HMM</h3><ul>
+<li><p>两个假设<br>  状态独立假设： 当前状态只依赖于上一个状态<br>  观测独立假设： 当前观测变量只依赖于对应的状态变量</p>
+</li>
+<li><p>两个问题<br>  标签偏置问题： 即算法倾向于选择分支较少的状态，这是由于状态独立假设使得在计算标签转移概率时在局部归一化状态转移概率<br>  特征缺失： 由于观测独立假设，HMM无法将上下文信息融入，所以会有较大的局限性</p>
+</li>
+</ul>
+<h3 id="MEMM"><a href="#MEMM" class="headerlink" title="MEMM"></a>MEMM</h3><p>MEMM 取消了HMM的观测独立假设，它是判别模型的一种，引入了特征，可以方便的把上下文信息设计到特征中，解决了上下文信息缺失的问题，但MEMM没有取消HMM的状态独立假设，所以依然存在标签偏置的问题</p>
+<h3 id="CRF"><a href="#CRF" class="headerlink" title="CRF"></a>CRF</h3><p>CRF 在MEMM的基础上进一步取消了HMM的状态独立假设，将标签转移也作为全局特征之一，在全局进行优化，所以crf解决了标签偏置以及上下文信息缺失的问题</p>
+<h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>RNN是经典的深度学习序列模型，相比于CRF, RNN在词向量的基础上做特征抽象，比CRF的特征模板的方式能够更好的避免过拟合，此外，RNN在序列上下文特征上相比crf会更加有效</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><p>LSTM是RNN的改进模型之一， LSTM加入了门控单元，使得门控单元的阈值可以随上下文以及当前输入动态改变，从而改善RNN由于梯度传播过程中参数连乘造成的梯度消失的问题，能够处理更长的上下文依赖</p>
+<h3 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h3><p>attention 使用一种更加直接的方式处理当前词与上下文的关系，相比于LSTM, attention避免了梯度在序列间的传到，可以并行的计算，也能够处理更长的上下文依赖。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/26/序列标注进化史/" data-id="cjzsj8lxd00002l4u62g6ogr9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-短文本的几点思考" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/短文本的几点思考/" class="article-date">
+  <time datetime="2019-08-26T13:59:27.000Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/短文本的几点思考/">短文本的几点思考</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-为什么lda在短文本上效果不好？"><a href="#1-为什么lda在短文本上效果不好？" class="headerlink" title="1. 为什么lda在短文本上效果不好？"></a>1. 为什么lda在短文本上效果不好？</h2><p>LDA是生成模型的一种，生成模型的参数分布都是从观测值中统计而来，短文本，也就意味着观测变量少，观测变量少，自然统计出来的概率分布不够准确。</p>
+<h2 id="2-为什么短文本做分类经常效果不好？"><a href="#2-为什么短文本做分类经常效果不好？" class="headerlink" title="2. 为什么短文本做分类经常效果不好？"></a>2. 为什么短文本做分类经常效果不好？</h2><p>在文本分类中，真正起关键作用的往往是那一两个关键词，而短文本中往往缺乏相应的一些关键词，以及足够的上下文信息造成分类效果欠佳</p>
+<h2 id="3-如何提升短文本上的分类效果？"><a href="#3-如何提升短文本上的分类效果？" class="headerlink" title="3. 如何提升短文本上的分类效果？"></a>3. 如何提升短文本上的分类效果？</h2><ul>
+<li><p>特征扩展：<br>使用外部的一些知识扩展特征，比如使用在wiki上训练的LDA模型向量化当前的短文本，然后将此向量加入到文本分类的特征中，也可以使用一些attention机制去扩展外部的一些特征</p>
+</li>
+<li><p>标签传播<br>利用搜索引擎如es，在有标签数据中，找最相近的满足条件的数据，做标签的简单voting，或加入权重做voting。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/26/短文本的几点思考/" data-id="cjzsj8lxl00022l4u7u7dqly5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-deepsequence-最完整的深度学习序列标注工具" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/13/deepsequence-最完整的深度学习序列标注工具/" class="article-date">
@@ -116,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/deepsequence-最完整的深度学习序列标注工具/" data-id="cjz9olwe900022z4u3t9zq9da" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/deepsequence-最完整的深度学习序列标注工具/" data-id="cjzsj8lxj00012l4uwpnuxd3u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -158,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/主动学习/" data-id="cjz9olwe000002z4ubt8tx4av" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/主动学习/" data-id="cjzsj8lxn00032l4uaniz30lw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="cjz9olwe600012z4u9mpvnqlh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="cjzsj8lxp00042l4unlevqivi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/数据不平衡的几点思考/" data-id="cjz9olweb00032z4utj9pbzhy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/数据不平衡的几点思考/" data-id="cjzsj8lxq00052l4upmhepqm1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,6 +394,14 @@
       <ul>
         
           <li>
+            <a href="/2019/08/26/序列标注进化史/">序列标注进化史</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/26/短文本的几点思考/">短文本的几点思考</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/13/deepsequence-最完整的深度学习序列标注工具/">deepsequence-最完整的深度学习序列标注工具</a>
           </li>
         
@@ -311,10 +411,6 @@
         
           <li>
             <a href="/2019/08/13/小数据VS大模型/">小数据VS大模型</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/13/数据不平衡的几点思考/">数据不平衡的几点思考</a>
           </li>
         
       </ul>
