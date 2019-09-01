@@ -70,6 +70,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CNN-VS-LSTM-选择及优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/01/CNN-VS-LSTM-选择及优化/" class="article-date">
+  <time datetime="2019-09-01T14:37:03.000Z" itemprop="datePublished">2019-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/01/CNN-VS-LSTM-选择及优化/">CNN VS LSTM 选择及优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-CNN-还是-LSTM"><a href="#1-CNN-还是-LSTM" class="headerlink" title="1. CNN 还是 LSTM ?"></a>1. CNN 还是 LSTM ?</h2><p>CNN 和 LSTM是深度学习中使用最多，最为经典的两个模型，在NLP中，他们都可以用于提取文本的上下文特征，实际任务中该如何选择呢？ 实际中我们主要考虑三个因素：</p>
+<ul>
+<li><p>上下文的依赖长度：<br>  CNN 提取的是类似于ngram的局部的上下文特征，LSTM由于三个门限单元的加入使得它能够处理提取更长的上下文特征</p>
+</li>
+<li><p>位置特征：<br>  CNN由于max_pooling, 移除了文本序列中的相对位置信息，LSTM的序列结构，使得lSTM天然保留了位置信息</p>
+</li>
+<li><p>效率：<br>  CNN 没有序列上的前后依赖问题，可以高效的并行运算，而lstm由于存在序列上的传递依赖问题，效率上相比CNN要低</p>
+</li>
+</ul>
+<p>综合上面三个因素的比较，CNN比较适合上下文依赖较短且对相对位置信息不敏感的场景，如情感分析，情感分析里的一些难点如双重否定，在上下文中的距离都离得不远，LSTM适合需要长距离特征，且依赖相对位置信息的场景</p>
+<h2 id="2-实际使用中如何优化LSTM的运行速度？"><a href="#2-实际使用中如何优化LSTM的运行速度？" class="headerlink" title="2. 实际使用中如何优化LSTM的运行速度？"></a>2. 实际使用中如何优化LSTM的运行速度？</h2><p>对于lstm来讲，它的运行速度的瓶颈在于序列上的处理，如果输入序列太长，会非常影响lstm的运行效率，但实际上，虽然lstm相比于RNN能处理更长的上下文特征，但也是相对的，超过一定的距离，lstm的效果也很有限，而且实际的nlp任务中，所需要的上下文的长度一般都不长。所以对于lstm来说，可行的效率优化方法是，确定一个适合的序列处理的长度，去把长文本按此长度切开，把这些切开的片段批量输入lstm模型，避免将整篇长文本当成一个序列输入lstm模型。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/01/CNN-VS-LSTM-选择及优化/" data-id="ck014t0no0004964utcrpy9r9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-序列标注进化史" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/26/序列标注进化史/" class="article-date">
@@ -108,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/26/序列标注进化史/" data-id="cjzsj8lxd00002l4u62g6ogr9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/26/序列标注进化史/" data-id="ck014t0ng0002964uy24zv6j4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/26/短文本的几点思考/" data-id="cjzsj8lxl00022l4u7u7dqly5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/26/短文本的几点思考/" data-id="ck014t0nk0003964ualt8jpvy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/deepsequence-最完整的深度学习序列标注工具/" data-id="cjzsj8lxj00012l4uwpnuxd3u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/deepsequence-最完整的深度学习序列标注工具/" data-id="ck014t0nr0005964ufkc14gk0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/主动学习/" data-id="cjzsj8lxn00032l4uaniz30lw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/主动学习/" data-id="ck014t0ms0000964uupprzenz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="cjzsj8lxp00042l4unlevqivi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/小数据VS大模型/" data-id="ck014t0nb0001964uwfa0fm57" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/数据不平衡的几点思考/" data-id="cjzsj8lxq00052l4upmhepqm1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/数据不平衡的几点思考/" data-id="ck014t0nu0006964ukuzys4v6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +428,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
     </div>
   </div>
 
@@ -392,6 +439,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/09/01/CNN-VS-LSTM-选择及优化/">CNN VS LSTM 选择及优化</a>
+          </li>
         
           <li>
             <a href="/2019/08/26/序列标注进化史/">序列标注进化史</a>
@@ -407,10 +458,6 @@
         
           <li>
             <a href="/2019/08/13/主动学习/">主动学习</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/13/小数据VS大模型/">小数据VS大模型</a>
           </li>
         
       </ul>
